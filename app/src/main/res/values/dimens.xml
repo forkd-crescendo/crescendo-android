@@ -11,7 +11,7 @@
     <dimen name="default_image_user_size">120dp</dimen>
     <dimen name="user_layout_margin">3dp</dimen>
     <dimen name="user_text_name_width">100dp</dimen>
-    <dimen name="logo_default_size">200dp</dimen>
+    <dimen name="logo_default_size">230dp</dimen>
     <dimen name="edit_text_size_login">20sp</dimen>
     <dimen name="button_with_login">150dp</dimen>
     <dimen name="button_label_size">18sp</dimen>
