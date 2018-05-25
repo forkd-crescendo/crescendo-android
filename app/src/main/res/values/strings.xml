@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Crescendo</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_artists">Artists</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_demos">Demos</string>
+    <string name="text_user_label">User</string>
+    <string name="text_password_label">Password</string>
+    <string name="button_login_label">Login</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_profile">Profile</string>
+    <string name="mock_text">Mock Text</string>
+    <string name="title_activity_artist_detail">ArtistDetailsActivity</string>
+</resources>
