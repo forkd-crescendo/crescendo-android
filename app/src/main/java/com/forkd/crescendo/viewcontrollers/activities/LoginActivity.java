@@ -27,16 +27,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private boolean isAllowed = false;
 
+    private boolean MOCK_AUTH = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        editTextUser = (EditText) findViewById(R.id.text_user);
-        editTextPassword = (EditText) findViewById(R.id.text_password);
+        editTextUser = findViewById(R.id.text_user);
+        editTextPassword = findViewById(R.id.text_password);
 
 
         findViewById(R.id.button_login)
@@ -52,6 +53,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isAuthorized(String user, String password) {
+
+        if (MOCK_AUTH) {
+            isAllowed = true;
+            return isAllowed;
+        }
 
         AndroidNetworking
                 .post(CrescendoApi.authentication())

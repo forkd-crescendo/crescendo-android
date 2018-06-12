@@ -37,8 +37,13 @@ public class ArtistsFragment extends Fragment {
 
     private String JWT;
 
+    private boolean MOCK_DATA = true;
+    private ArrayList<User> USERS_MOCK = new ArrayList<User>();
+
     public ArtistsFragment() {
-        // Required empty public constructor
+        USERS_MOCK.add(new User("Dorotea Quezada", "Ana_Leiva@yahoo.com", "https://s3.amazonaws.com/uifaces/faces/twitter/digitalmaverick/128.jpg", "LIMA", "Los Olivos", "DJ", "Pop", "10", 29, "1"));
+        USERS_MOCK.add(new User("Ariadna Valdez", "Mercedes_Jurez@yahoo.com", "https://s3.amazonaws.com/uifaces/faces/twitter/andyisonline/128.jpg", "LIMA", "San Juan de Lurigancho", "DJ", "Pop", "10", 29, "1"));
+        USERS_MOCK.add(new User("Carolina Romero", "Gilberto_Murillo84@yahoo.com", "https://s3.amazonaws.com/uifaces/faces/twitter/martinansty/128.jpg", "LIMA", "San Luis", "DJ", "Pop", "10", 29, "1"));
     }
 
 
@@ -61,6 +66,13 @@ public class ArtistsFragment extends Fragment {
     }
 
     private void updateData() {
+        if (MOCK_DATA) {
+            users = USERS_MOCK;
+            usersAdapter.setUsers(users);
+            usersAdapter.notifyDataSetChanged();
+            return;
+        }
+
         AndroidNetworking
                 .get(CrescendoApi.getUsers())
                 .addHeaders("Accept", "application/json")
