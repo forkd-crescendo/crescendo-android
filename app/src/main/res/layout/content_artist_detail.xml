@@ -24,8 +24,8 @@
         android:layout_margin="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_user"
-        android:textColor="@color/colorAccent"
         android:textStyle="bold"
+        android:textColor="@color/colorAccent"
         android:textSize="@dimen/text_title_size"
         android:text="@string/mock_text"/>
     <TextView
@@ -45,7 +45,7 @@
         app:layout_constraintStart_toEndOf="@id/text_music_role"
         android:text="@string/mock_text"/>
     <TextView
-        android:id="@+id/text_artwoks_label"
+        android:id="@+id/text_artworks_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
@@ -55,14 +55,14 @@
         app:layout_constraintStart_toStartOf="parent"
         android:text="Artworks - "/>
     <TextView
-        android:id="@+id/text_artwoks_count"
+        android:id="@+id/text_artworks_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
         android:layout_marginEnd="@dimen/default_margin"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/text_music_role"
-        app:layout_constraintStart_toEndOf="@id/text_artwoks_label"
+        app:layout_constraintStart_toEndOf="@id/text_artworks_label"
         android:text="@string/mock_text"
         />
     <TextView
@@ -86,14 +86,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/mock_text"
         />
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/recycler_videos"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="@dimen/default_margin"-->
-        <!--app:layout_constraintTop_toBottomOf="@id/text_artwoks_count"-->
-        <!--&gt;-->
-    <!--</android.support.v7.widget.RecyclerView>-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_videos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintTop_toBottomOf="@id/text_artworks_count">
+    </android.support.v7.widget.RecyclerView>
 
 
 

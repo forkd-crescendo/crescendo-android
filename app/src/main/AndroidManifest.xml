@@ -28,7 +28,8 @@
         <activity
             android:name=".viewcontrollers.activities.ArtistDetailActivity"
             android:label="@string/title_activity_artist_detail"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".viewcontrollers.activities.ArtworkDetailActivity"></activity>
     </application>
 
 </manifest>

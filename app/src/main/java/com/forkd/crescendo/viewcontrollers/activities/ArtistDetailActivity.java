@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,8 +20,6 @@ public class ArtistDetailActivity extends AppCompatActivity {
     private TextView textName;
     private TextView musicRole;
     private TextView musicGenre;
-    private TextView artworksCount;
-    private TextView followersCount;
     User user;
 
     @Override
@@ -39,8 +38,6 @@ public class ArtistDetailActivity extends AppCompatActivity {
         textName = (TextView) findViewById(R.id.text_name);
         musicRole = (TextView) findViewById(R.id.text_music_role);
         musicGenre = (TextView) findViewById(R.id.text_music_genre);
-        artworksCount = (TextView) findViewById(R.id.text_artwoks_count);
-        followersCount = (TextView) findViewById(R.id.text_followers_count);
 
         updateViews(user);
 
@@ -54,8 +51,6 @@ public class ArtistDetailActivity extends AppCompatActivity {
         textName.setText(user.getName());
         musicRole.setText(user.getMusicRole());
         musicGenre.setText(user.getMusicGenre());
-        artworksCount.setText(String.valueOf(user.getFollowerCount()));
-        followersCount.setText(String.valueOf(user.getFollowerCount()));
     }
 
 }
