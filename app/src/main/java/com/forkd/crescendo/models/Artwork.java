@@ -13,14 +13,14 @@ import java.util.List;
 
 public class Artwork implements Parcelable{
     private String videoUrl;
-    private String description;
     private String title;
+    private String description;
     private String thumbnail;
 
-    public Artwork(String videoUrl, String description, String title, String thumbnail) {
+    public Artwork(String videoUrl, String title, String description, String thumbnail) {
         this.videoUrl = videoUrl;
-        this.description = description;
         this.title = title;
+        this.description = description;
         this.thumbnail = thumbnail;
     }
 
@@ -57,8 +57,8 @@ public class Artwork implements Parcelable{
     public Bundle toBundle() {
         Bundle bundle = new Bundle();
         bundle.putString("videoURL", getVideoUrl());
-        bundle.putString("description", getDescription());
         bundle.putString("title", getTitle());
+        bundle.putString("description", getDescription());
         return bundle;
     }
 
@@ -70,14 +70,14 @@ public class Artwork implements Parcelable{
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(videoUrl);
-        parcel.writeString(description);
         parcel.writeString(title);
+        parcel.writeString(description);
     }
 
     public Artwork(Parcel in){
         videoUrl=in.readString();
-        description=in.readString();
         title=in.readString();
+        description=in.readString();
     }
     public static final Parcelable.Creator<Artwork> CREATOR=new Parcelable.Creator<Artwork>()
     {
@@ -129,8 +129,8 @@ public class Artwork implements Parcelable{
         public static Builder from(Bundle bundle) {
             return new Builder(new Artwork(
                     bundle.getString("videoURL"),
-                    bundle.getString("description"),
                     bundle.getString("title"),
+                    bundle.getString("description"),
                     bundle.getString("thumbnail")));
         }
 
@@ -138,8 +138,8 @@ public class Artwork implements Parcelable{
             try {
                 return new Builder(new Artwork(
                         jsonArkwork.getString("videoURL"),
-                        jsonArkwork.getString("description"),
                         jsonArkwork.getString("title"),
+                        jsonArkwork.getString("description"),
                         jsonArkwork.getString("thumbnail")));
             } catch (JSONException e) {
                 e.printStackTrace();
