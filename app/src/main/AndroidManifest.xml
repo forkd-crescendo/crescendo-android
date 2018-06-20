@@ -29,7 +29,11 @@
             android:name=".viewcontrollers.activities.ArtistDetailActivity"
             android:label="@string/title_activity_artist_detail"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".viewcontrollers.activities.ArtworkDetailActivity"></activity>
+        
+        <activity
+            android:name=".viewcontrollers.activities.ArtworkDetailActivity"
+            android:label="@string/title_activity_artwork_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

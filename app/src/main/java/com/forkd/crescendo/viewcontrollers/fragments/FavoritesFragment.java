@@ -1,6 +1,5 @@
 package com.forkd.crescendo.viewcontrollers.fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +13,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.forkd.crescendo.R;
+import com.forkd.crescendo.models.Artwork;
 import com.forkd.crescendo.models.User;
 import com.forkd.crescendo.network.CrescendoApi;
 import com.forkd.crescendo.viewcontrollers.adapters.FavoritesAdapter;
@@ -29,17 +29,26 @@ import java.util.List;
  */
 public class FavoritesFragment extends Fragment {
 
-    private List<User> users;
-    private RecyclerView usersRecyclerView;
-    private RecyclerView.LayoutManager usersLayoutManager;
-    private FavoritesAdapter usersAdapter;
+    private List<Artwork> artworks;
+    private RecyclerView artworksRecyclerView;
+    private RecyclerView.LayoutManager artworksLayoutManager;
+    private FavoritesAdapter artworksAdapter;
 
+    User user;
     private String JWT;
 
-    public FavoritesFragment() {
-        // Required empty public constructor
-    }
+    private boolean MOCK_DATA = true;
+    private ArrayList<Artwork> ARTWORKS_MOCK = new ArrayList<Artwork>();
 
+    public FavoritesFragment() {
+        ARTWORKS_MOCK.add(new Artwork("R29Pq23T6xE", "Top 5 Covers of MARCH 2018 | Best Cover Songs 2018", "Subscribe! http://smarturl.it/SubCoverNation Click That Bell to Turn On Notifications Covers performed by: Emma Heesters ( Friends - Marshmello ...", "https://i.ytimg.com/vi/R29Pq23T6xE/default.jpg"));
+        ARTWORKS_MOCK.add(new Artwork("3G8CM-6BZC4", "Perfect - Ed Sheeran & Beyoncé (Boyce Avenue acoustic cover) on Spotify & Apple", "Our friends at MVMT are offering $15 off any purchase at http://mvmt.com/boyce - just use the code \"BOYCE\" :) Tickets + VIP Meet & Greets: ...", "https://i.ytimg.com/vi/3G8CM-6BZC4/default.jpg"));
+        ARTWORKS_MOCK.add(new Artwork("MhQKe-aERsU", "Ed Sheeran - Shape Of You ( cover by J.Fla )", "My New album is out Now! Listen to Rose: http://bit.ly/JflacompleteworksonSpotify http://bit.ly/JFlaRoseAppleMusic http://bit.ly/jflaRoseonSpotify ...", "https://i.ytimg.com/vi/MhQKe-aERsU/default.jpg"));
+        ARTWORKS_MOCK.add(new Artwork("39_OmBO9jVg", "All of Me - John Legend Cover (Luciana Zogbi)", "All of Me - John Legend (Cover by Luciana Zogbi) Available on Itunes and Spotify Itunes: ...", "https://i.ytimg.com/vi/39_OmBO9jVg/default.jpg"));
+        ARTWORKS_MOCK.add(new Artwork("WsptdUFthWI", "Closer - The Chainsmokers ft. Halsey (Boyce Avenue ft. Sarah Hyland cover) on Spotify & Apple", "Tickets + VIP Meet & Greets: http://smarturl.it/BATour Spotify: http://smarturl.it/CSV4Spotify1 Apple: http://smarturl.it/CSV4Apple1 iTunes: ...", "https://i.ytimg.com/vi/WsptdUFthWI/default.jpg"));
+        ARTWORKS_MOCK.add(new Artwork("i1R4R84-EPA", "Camila Cabello - Havana ( cover by J.Fla )", "My New album is out today! Listen to Rose: http://bit.ly/JflacompleteworksonSpotify http://bit.ly/JFlaRoseAppleMusic http://bit.ly/jflaRoseonSpotify ...", "https://i.ytimg.com/vi/i1R4R84-EPA/default.jpg"));
+        ARTWORKS_MOCK.add(new Artwork("jPulLuBRfWQ", "No te creas tan importante- El bebeto (Cover by Xandra Garsem)", "SOCIAL: http://facebook.com/xandragarsem http://instagram.com/xandragarsem http://twitter.com/xandragarsem VISIT MY BLOG: http://bonjourxandra.com.", "https://i.ytimg.com/vi/jPulLuBRfWQ/default.jpg"));
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,45 +57,39 @@ public class FavoritesFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favorites, container, false);
-        users = new ArrayList<>();
-        usersRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_favorites);
-        usersAdapter = new FavoritesAdapter(users);
-        usersLayoutManager = new LinearLayoutManager(view.getContext());
-        usersRecyclerView.setAdapter(usersAdapter);
-        usersRecyclerView.setLayoutManager(usersLayoutManager);
+        artworks = new ArrayList<>();
+        artworksRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_favorites);
+        artworksAdapter = new FavoritesAdapter(artworks);
+        artworksLayoutManager = new LinearLayoutManager(view.getContext());
+        artworksRecyclerView.setAdapter(artworksAdapter);
+        artworksRecyclerView.setLayoutManager(artworksLayoutManager);
         updateData();
         return view;
     }
 
     private void updateData() {
-        AndroidNetworking
-                .get(CrescendoApi.getUsers())
-                .addHeaders("Accept", "application/json")
-                .addHeaders("Content-Type", "application/json")
-                .addHeaders("Authorization", JWT)
-                .setPriority(Priority.LOW)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            users = User.Builder
-                                    .from(response.getJSONArray("data"))
-                                    .buildAll();
-
-                            usersAdapter.setUsers(users);
-                            usersAdapter.notifyDataSetChanged();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    @Override
-                    public void onError(ANError anError) {
-
-                    }
-                });
+        if (MOCK_DATA) {
+            artworks = ARTWORKS_MOCK;
+            artworksAdapter.setArtworks(artworks);
+            artworksAdapter.notifyDataSetChanged();
+            return;
         }
 
+        AndroidNetworking
+            .get(CrescendoApi.getUsers())
+            .addHeaders("Accept", "application/json")
+            .addHeaders("Content-Type", "application/json")
+            .addHeaders("Authorization", JWT)
+            .setPriority(Priority.LOW)
+            .build()
+            .getAsJSONObject(new JSONObjectRequestListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                }
+                @Override
+                public void onError(ANError anError) {
 
+                }
+            });
     }
+}

@@ -12,16 +12,13 @@ import android.widget.TextView;
 import com.androidnetworking.widget.ANImageView;
 import com.forkd.crescendo.R;
 import com.forkd.crescendo.models.Artwork;
-import com.forkd.crescendo.viewcontrollers.activities.ArtistDetailActivity;
+import com.forkd.crescendo.viewcontrollers.activities.ArtworkDetailActivity;
 
 import java.util.List;
 
 public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHolder> {
 
     private List<Artwork> artworks;
-    public ArtworksAdapter(List<Artwork> artworks) {
-        this.artworks = artworks;
-    }
 
     @Override
     public ArtworksAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -53,29 +50,32 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
 
     }
 
+    public ArtworksAdapter(List<Artwork> artworks) {
+        this.artworks = artworks;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ANImageView artworkThumbnail;
         private TextView artworkTitle;
-        private TextView artworkDescription;
         private ConstraintLayout artworkLayout;
         public ViewHolder(View view) {
             super(view);
             artworkThumbnail = (ANImageView) view.findViewById(R.id.image_thumbnail);
             artworkTitle = (TextView) view.findViewById(R.id.text_title_video);
-            artworkDescription = (TextView) view.findViewById(R.id.text_description_video);
             artworkLayout = (ConstraintLayout) view.findViewById(R.id.layout_artwork_item);
         }
 
         public void updatesViews(final Artwork artwork) {
             artworkThumbnail.setDefaultImageResId(R.mipmap.ic_launcher);
+            artworkThumbnail.setErrorImageResId(R.mipmap.ic_launcher);
+            artworkThumbnail.setImageUrl(artwork.getThumbnail());
             artworkTitle.setText(artwork.getTitle());
-            artworkDescription.setText(artwork.getDescription());
             artworkLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Context context = view.getContext();
                     context.startActivity(new Intent(
-                            context, ArtistDetailActivity.class
+                            context, ArtworkDetailActivity.class
                     ).putExtras(artwork.toBundle()));
                 }
             });

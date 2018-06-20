@@ -11,39 +11,39 @@ import android.widget.TextView;
 
 import com.androidnetworking.widget.ANImageView;
 import com.forkd.crescendo.R;
+import com.forkd.crescendo.models.Artwork;
 import com.forkd.crescendo.models.User;
 import com.forkd.crescendo.viewcontrollers.activities.ArtistDetailActivity;
+import com.forkd.crescendo.viewcontrollers.activities.ArtworkDetailActivity;
 
 import java.util.List;
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
-
-    private List<User> users;
-
+    private List<Artwork> artworks;
 
     @Override
     public FavoritesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(
-                LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.item_favorite, parent, false));
+            LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_favorite, parent, false));
     }
 
     @Override
     public void onBindViewHolder(FavoritesAdapter.ViewHolder holder, int position) {
-        holder.updatesViews(users.get(position));
+        holder.updatesViews(artworks.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return users.size();
+        return artworks.size();
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<Artwork> getArtworks() {
+        return artworks;
     }
 
-    public FavoritesAdapter setUsers(List<User> users) {
-        this.users = users;
+    public FavoritesAdapter setArtworks(List<Artwork> artworks) {
+        this.artworks = artworks;
         return this;
     }
 
@@ -51,39 +51,35 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
     }
 
-    public FavoritesAdapter(List<User> users) {
-        this.users = users;
+    public FavoritesAdapter(List<Artwork> artworks) {
+        this.artworks = artworks;
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ANImageView imageUser;
-        private TextView textName;
-        private TextView musicRole;
-        private TextView musicGenre;
-        private TextView age;
-        private ConstraintLayout favoriteLayout;
-
+        private ANImageView artworkThumbnail;
+        private TextView artworkTitle;
+        private ConstraintLayout artworkLayout;
         public ViewHolder(View view) {
             super(view);
-            imageUser = (ANImageView) view.findViewById(R.id.image_user);
-            textName = (TextView) view.findViewById(R.id.text_name);
-            musicRole = (TextView) view.findViewById(R.id.text_music_role);
-            musicGenre = (TextView) view.findViewById(R.id.text_music_genre);
-            age = (TextView) view.findViewById(R.id.text_age);
-            favoriteLayout = (ConstraintLayout) view.findViewById(R.id.layout_favorite);
+            artworkThumbnail = (ANImageView) view.findViewById(R.id.item_favorite_thumbnail);
+            artworkTitle = (TextView) view.findViewById(R.id.item_favorite_title);
+            artworkLayout = (ConstraintLayout) view.findViewById(R.id.layout_favorite_item);
         }
 
-        public void updatesViews(final User user) {
-            imageUser.setDefaultImageResId(R.mipmap.ic_launcher);
-            imageUser.setErrorImageResId(R.mipmap.ic_launcher);
-            imageUser.setImageUrl(user.getAvatar());
-            textName.setText(user.getName());
-            musicRole.setText(user.getMusicRole());
-            musicGenre.setText(user.getMusicGenre());
-            age.setText(String.valueOf(user.getAge()));
-
-
+        public void updatesViews(final Artwork artwork) {
+            artworkThumbnail.setDefaultImageResId(R.mipmap.ic_launcher);
+            artworkThumbnail.setErrorImageResId(R.mipmap.ic_launcher);
+            artworkThumbnail.setImageUrl(artwork.getThumbnail());
+            artworkTitle.setText(artwork.getTitle());
+            artworkLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+                    context.startActivity(new Intent(
+                            context, ArtworkDetailActivity.class
+                    ).putExtras(artwork.toBundle()));
+                }
+            });
         }
     }
 }

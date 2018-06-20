@@ -15,4 +15,6 @@
     <dimen name="edit_text_size_login">20sp</dimen>
     <dimen name="button_with_login">150dp</dimen>
     <dimen name="button_label_size">18sp</dimen>
+    <dimen name="bottom_height">60dp</dimen>
+    <dimen name="image_offset">80dp</dimen>
 </resources>

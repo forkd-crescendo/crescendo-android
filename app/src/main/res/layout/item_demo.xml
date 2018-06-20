@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_favorite_item"
+    android:id="@+id/layout_demo_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/default_margin"
@@ -8,18 +8,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.androidnetworking.widget.ANImageView
-        android:id="@+id/item_favorite_thumbnail"
+        android:id="@+id/item_demo_thumbnail"
         android:layout_width="@dimen/thumbnails_default_width"
         android:layout_height="@dimen/thumbnails_default_height"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView
-        android:id="@+id/item_favorite_title"
+        android:id="@+id/item_demo_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/item_favorite_thumbnail"
+        app:layout_constraintStart_toEndOf="@id/item_demo_thumbnail"
         app:layout_constraintTop_toTopOf="parent"
         android:text="@string/mock_text"/>
 

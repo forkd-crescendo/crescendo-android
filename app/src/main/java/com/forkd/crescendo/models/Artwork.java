@@ -15,11 +15,13 @@ public class Artwork implements Parcelable{
     private String videoUrl;
     private String description;
     private String title;
+    private String thumbnail;
 
-    public Artwork(String videoUrl, String description, String title) {
+    public Artwork(String videoUrl, String description, String title, String thumbnail) {
         this.videoUrl = videoUrl;
         this.description = description;
         this.title = title;
+        this.thumbnail = thumbnail;
     }
 
     public Artwork() {
@@ -91,6 +93,14 @@ public class Artwork implements Parcelable{
         }
     };
 
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
     public static class Builder {
         private Artwork artwork;
         private ArrayList<Artwork> artworks;
@@ -120,7 +130,8 @@ public class Artwork implements Parcelable{
             return new Builder(new Artwork(
                     bundle.getString("videoURL"),
                     bundle.getString("description"),
-                    bundle.getString("title")));
+                    bundle.getString("title"),
+                    bundle.getString("thumbnail")));
         }
 
         public static Builder from(JSONObject jsonArkwork) {
@@ -128,7 +139,8 @@ public class Artwork implements Parcelable{
                 return new Builder(new Artwork(
                         jsonArkwork.getString("videoURL"),
                         jsonArkwork.getString("description"),
-                        jsonArkwork.getString("title")));
+                        jsonArkwork.getString("title"),
+                        jsonArkwork.getString("thumbnail")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

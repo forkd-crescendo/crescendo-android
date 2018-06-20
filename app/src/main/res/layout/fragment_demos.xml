@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <FrameLayout
-    android:id="@+id/youtube_layout"
-    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:visibility="visible" />
-</RelativeLayout>
+    tools:context=".viewcontrollers.fragments.DemosFragment"
+    android:layout_marginBottom="@dimen/bottom_height">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_demos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>

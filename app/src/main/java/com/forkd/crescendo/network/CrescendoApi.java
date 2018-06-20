@@ -11,4 +11,7 @@ public class CrescendoApi {
     public static String getUsers() {
         return BASE_URL + "users";
     }
+    public static String getFavorites() {
+        return BASE_URL + "favorites";
+    }
 }
