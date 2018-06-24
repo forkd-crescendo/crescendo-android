@@ -1,7 +1,6 @@
 package com.forkd.crescendo.models;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,26 +14,18 @@ public class User {
 
     private String name;
     private String email;
-    private String avatar;
-    private String location;
-    private String district;
-    private String musicRole;
-    private String musicGenre;
-    private String followerCount;
+    private String photo;
+    private String role;
+    private String genre;
     private ArrayList<Artwork> artworks=new ArrayList<Artwork>();
-    private int age;
     private String id;
 
-    public User(String name, String email, String avatar, String location, String district, String musicRole, String musicGenre, String followerCount, int age, String id) {
+    public User(String name, String email, String photo, String role, String genre, String id) {
         this.name = name;
         this.email = email;
-        this.avatar = avatar;
-        this.location = location;
-        this.district = district;
-        this.musicRole = musicRole;
-        this.musicGenre = musicGenre;
-        this.followerCount = followerCount;
-        this.age = age;
+        this.photo = photo;
+        this.role = role;
+        this.genre = genre;
         this.id = id;
     }
 
@@ -59,57 +50,30 @@ public class User {
         return this;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getPhoto() {
+        return photo;
     }
 
-    public User setAvatar(String avatar) {
-        this.avatar = avatar;
+    public User setPhoto(String photo) {
+        this.photo = photo;
         return this;
     }
 
-    public String getLocation() {
-        return location;
+    public String getRole() {
+        return role;
     }
 
-    public User setLocation(String location) {
-        this.location = location;
+    public User setRole(String role) {
+        this.role = role;
         return this;
     }
 
-    public String getDistrict() {
-        return district;
+    public String getGenre() {
+        return genre;
     }
 
-    public User setDistrict(String district) {
-        this.district = district;
-        return this;
-    }
-
-    public String getMusicRole() {
-        return musicRole;
-    }
-
-    public User setMusicRole(String musicRole) {
-        this.musicRole = musicRole;
-        return this;
-    }
-
-    public String getMusicGenre() {
-        return musicGenre;
-    }
-
-    public User setMusicGenre(String musicGenre) {
-        this.musicGenre = musicGenre;
-        return this;
-    }
-
-    public String getFollowerCount() {
-        return followerCount;
-    }
-
-    public User setFollowerCount(String followerCount) {
-        this.followerCount = followerCount;
+    public User setGenre(String genre) {
+        this.genre = genre;
         return this;
     }
 
@@ -119,15 +83,6 @@ public class User {
 
     public User setArtworks(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
-        return this;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public User setAge(int age) {
-        this.age = age;
         return this;
     }
 
@@ -144,14 +99,10 @@ public class User {
         Bundle bundle = new Bundle();
         bundle.putString("name",getName());
         bundle.putString("email",getEmail());
-        bundle.putString("avatar",getAvatar());
-        bundle.putString("location",getLocation());
-        bundle.putString("distric",getDistrict());
-        bundle.putString("musicRole",getMusicRole());
-        bundle.putString("musicGenre",getMusicGenre());
-        bundle.putString("followerCount",getFollowerCount());
-        bundle.putInt("age",getAge());
-        bundle.putString("_id",getId());
+        bundle.putString("photo", getPhoto());
+        bundle.putString("role", getRole());
+        bundle.putString("genre", getGenre());
+        bundle.putString("id",getId());
         return bundle;
     }
     public static class Builder {
@@ -183,14 +134,10 @@ public class User {
             return new Builder(new User(
                     bundle.getString("name"),
                     bundle.getString("email"),
-                    bundle.getString("avatar"),
-                    bundle.getString("location"),
-                    bundle.getString("district"),
-                    bundle.getString("musicRole"),
-                    bundle.getString("musicGenre"),
-                    bundle.getString("followerCount"),
-                    bundle.getInt("age"),
-                    bundle.getString("_id")));
+                    bundle.getString("photo"),
+                    bundle.getString("role"),
+                    bundle.getString("genre"),
+                    bundle.getString("id")));
         }
 
         public static Builder from(JSONObject jsonUser) {
@@ -198,14 +145,10 @@ public class User {
                 return new Builder(new User(
                         jsonUser.getString("name"),
                         jsonUser.getString("email"),
-                        jsonUser.getString("avatar"),
-                        jsonUser.getString("location"),
-                        jsonUser.getString("district"),
-                        jsonUser.getString("musicRole"),
-                        jsonUser.getString("musicGenre"),
-                        jsonUser.getString("followerCount"),
-                        jsonUser.getInt("age"),
-                        jsonUser.getString("_id")));
+                        jsonUser.getString("photo"),
+                        jsonUser.getString("role"),
+                        jsonUser.getString("genre"),
+                        jsonUser.getString("id")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

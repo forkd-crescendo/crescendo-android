@@ -1,5 +1,6 @@
 package com.forkd.crescendo.viewcontrollers.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,8 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private boolean isAllowed = false;
 
-    private boolean MOCK_AUTH = true;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,43 +38,46 @@ public class LoginActivity extends AppCompatActivity {
         editTextUser = findViewById(R.id.text_user);
         editTextPassword = findViewById(R.id.text_password);
 
+        editTextUser.setText("julia@farrell.com");
+        editTextPassword.setText("password123");
 
         findViewById(R.id.button_login)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (isAuthorized(editTextUser.getText().toString(),
-                                editTextPassword.getText().toString())) {
-                            startActivity(new Intent(v.getContext(), MainActivity.class));
+                        String userText = editTextUser.getText().toString();
+                        String passwordText = editTextPassword.getText().toString();
+
+                        if (userText.isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "Ingrese al usuario", Toast.LENGTH_SHORT).show();
+                            return;
                         }
+
+                        if (passwordText.isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "Ingrese la contraseña", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        isAuthorized(userText, passwordText);
                     }
                 });
     }
 
     private boolean isAuthorized(String user, String password) {
-
-        if (MOCK_AUTH) {
-            isAllowed = true;
-            return isAllowed;
-        }
-
         AndroidNetworking
                 .post(CrescendoApi.authentication())
-                .addHeaders("Accept", "application/json")
-                .addHeaders("Content-Type", "application/json")
-                .addBodyParameter("strategy", "local")
                 .addBodyParameter("email", user)
                 .addBodyParameter("password", password)
-                .setPriority(Priority.LOW)
+                .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Log.d("CrescendoAppSuccess", response.getString("accessToken"));
-
-                            writeToSharedPreferences(response.getString("accessToken"));
+                            Log.d("CrescendoAppSuccess", response.getString("auth_token"));
+                            writeToSharedPreferences(response.getString("auth_token"));
                             isAllowed = true;
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -84,8 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         Log.d("CrescendoAppFail", anError.getErrorDetail());
-                        Toast.makeText(LoginActivity.this, "User and password is not correct",
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Usuario o Contraseña incorrecta.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -93,10 +94,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void writeToSharedPreferences(String accessToken) {
+        Activity activity = this;
 
-//        SharedPreferences sharedPref = LoginActivity.this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = getSharedPreferences("accesstoken", MODE_PRIVATE).edit();
-
+        SharedPreferences mPrefs = getSharedPreferences("jwt", 0);
+        SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString("jwt", accessToken);
         editor.commit();
     }

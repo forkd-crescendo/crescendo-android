@@ -76,11 +76,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         public void updatesViews(final User user) {
             imageUser.setDefaultImageResId(R.mipmap.ic_launcher);
             imageUser.setErrorImageResId(R.mipmap.ic_launcher);
-            imageUser.setImageUrl(user.getAvatar());
+            imageUser.setImageUrl(user.getPhoto());
             textName.setText(user.getName());
-            musicRole.setText(user.getMusicRole());
-            musicGenre.setText(user.getMusicGenre());
-            age.setText(String.valueOf(user.getAge()));
+            musicRole.setText(user.getRole());
+            musicGenre.setText(user.getGenre());
+            age.setText("21");
             userLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
