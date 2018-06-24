@@ -4,7 +4,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_artists">Artistas</string>
     <string name="title_favorites">Favoritos</string>
-    <string name="title_demos">Demos</string>
+    <string name="title_demos">Mis Canciones</string>
     <string name="text_user_label">Usuario</string>
     <string name="text_password_label">Contraseña</string>
     <string name="button_login_label">Ingresar</string>
@@ -12,7 +12,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_profile">Perfil</string>
-    <string name="mock_text">Mock Text</string>
+    <string name="mock_text">Prueba</string>
     <string name="title_activity_artist_detail">Detalles del Artista</string>
 
     <string name="youtube_api_key">AIzaSyDNu6af_OVUapzNaFeR0otWFTYOHMz1vVs</string>
@@ -21,4 +21,10 @@
     <string name="seek_to">Saltar a</string>
     <string name="seek_to_hint">Segundos</string>
     <string name="title_activity_artwork_detail">Detalles</string>
+    <string name="artist_details_artworks_label">Canciones -</string>
+    <string name="artist_details_followers_label">Followers -</string>
+    <string name="artist_details_new_artwork_label">Nuevo Video</string>
+    <string name="artist_details_new_artwork_button">Subir</string>
+    <string name="artist_details_edit_text_hint">URL del video</string>
+    <string name="logout_button_label">Cerrar Sesión</string>
 </resources>

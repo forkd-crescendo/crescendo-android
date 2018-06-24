@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_profile"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:stackFromBottom="true"
+    android:transcriptMode="alwaysScroll"
     tools:context=".viewcontrollers.fragments.ProfileFragment">
 
     <android.support.constraint.ConstraintLayout
@@ -11,7 +15,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/constraint_layout_profile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/image_offset">
 
         <ImageView
             android:id="@+id/image_user"
@@ -20,8 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/applogo"
-            />
+            android:src="@mipmap/applogo" />
         <TextView
             android:id="@+id/text_name"
             android:layout_width="wrap_content"
@@ -32,7 +36,7 @@
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:textSize="@dimen/text_title_size"
-            android:text="Ricardo"/>
+            android:text="Ricardo" />
         <TextView
             android:id="@+id/text_music_role"
             android:layout_width="wrap_content"
@@ -40,7 +44,7 @@
             android:layout_margin="@dimen/default_margin"
             app:layout_constraintTop_toBottomOf="@id/text_name"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Baterista"/>
+            android:text="Baterista" />
         <TextView
             android:id="@+id/text_music_genre"
             android:layout_width="wrap_content"
@@ -48,7 +52,7 @@
             android:layout_margin="@dimen/default_margin"
             app:layout_constraintTop_toBottomOf="@id/text_name"
             app:layout_constraintStart_toEndOf="@id/text_music_role"
-            android:text="Salsa"/>
+            android:text="Salsa" />
         <TextView
             android:id="@+id/text_artwoks_label"
             android:layout_width="wrap_content"
@@ -58,7 +62,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/text_music_role"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Artworks - "/>
+            android:text="Artworks - " />
         <TextView
             android:id="@+id/text_artwoks_count"
             android:layout_width="wrap_content"
@@ -79,7 +83,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/text_music_role"
             app:layout_constraintEnd_toStartOf="@id/text_followers_count"
-            android:text="Followers - "/>
+            android:text="Followers - " />
         <TextView
             android:id="@+id/text_followers_count"
             android:layout_width="wrap_content"
@@ -89,8 +93,42 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/text_music_role"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="23"
-            />
+            android:text="23" />
 
+        <TextView
+            android:id="@+id/new_artwork_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/text_followers_count"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/artist_details_new_artwork_label" />
+
+        <EditText
+            android:id="@+id/new_artwork_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/new_artwork_label"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="@string/artist_details_edit_text_hint" />
+        <Button
+            android:id="@+id/new_artwork_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/new_artwork_edit_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/artist_details_new_artwork_button" />
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/new_artwork_button"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/logout_button_label" />
     </android.support.constraint.ConstraintLayout>
-</FrameLayout>
+</ScrollView>

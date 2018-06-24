@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".viewcontrollers.activities.ArtistDetailActivity">
     <ScrollView
         android:layout_width="fill_parent"
@@ -23,7 +23,7 @@
                     android:layout_marginTop="@dimen/image_offset"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
                 <TextView
                     android:id="@+id/text_name"
                     android:layout_width="wrap_content"
@@ -34,7 +34,8 @@
                     android:textStyle="bold"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/text_title_size"
-                    android:text="@string/mock_text"/>
+                    android:text="@string/mock_text" />
+
                 <TextView
                     android:id="@+id/text_music_role"
                     android:layout_width="wrap_content"
@@ -42,7 +43,7 @@
                     android:layout_margin="@dimen/default_margin"
                     app:layout_constraintTop_toBottomOf="@id/text_name"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:text="@string/mock_text"/>
+                    android:text="@string/mock_text" />
                 <TextView
                     android:id="@+id/text_music_genre"
                     android:layout_width="wrap_content"
@@ -50,7 +51,8 @@
                     android:layout_margin="@dimen/default_margin"
                     app:layout_constraintTop_toBottomOf="@id/text_name"
                     app:layout_constraintStart_toEndOf="@id/text_music_role"
-                    android:text="@string/mock_text"/>
+                    android:text="@string/mock_text" />
+
                 <TextView
                     android:id="@+id/text_artworks_label"
                     android:layout_width="wrap_content"
@@ -60,7 +62,7 @@
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/text_music_role"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:text="Artworks - "/>
+                    android:text="@string/artist_details_artworks_label"/>
                 <TextView
                     android:id="@+id/text_artworks_count"
                     android:layout_width="wrap_content"
@@ -70,8 +72,8 @@
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/text_music_role"
                     app:layout_constraintStart_toEndOf="@id/text_artworks_label"
-                    android:text="@string/mock_text"
-                    />
+                    android:text="@string/mock_text" />
+
                 <TextView
                     android:id="@+id/text_followers_label"
                     android:layout_width="wrap_content"
@@ -81,7 +83,7 @@
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/text_music_role"
                     app:layout_constraintEnd_toStartOf="@id/text_followers_count"
-                    android:text="Followers - "/>
+                    android:text="@string/artist_details_followers_label" />
                 <TextView
                     android:id="@+id/text_followers_count"
                     android:layout_width="wrap_content"
@@ -91,7 +93,7 @@
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/text_music_role"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:text="@string/mock_text"/>
+                    android:text="@string/mock_text" />
             </android.support.constraint.ConstraintLayout>
 
             <android.support.v7.widget.RecyclerView

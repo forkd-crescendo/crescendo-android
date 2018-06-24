@@ -13,14 +13,24 @@
         android:layout_height="@dimen/thumbnails_default_height"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
         android:id="@+id/item_favorite_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
+        android:text="@string/mock_text"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/item_favorite_thumbnail"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_favorite_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        app:layout_constraintStart_toEndOf="@id/item_favorite_thumbnail"
+        app:layout_constraintTop_toBottomOf="@id/item_favorite_title"
         android:text="@string/mock_text"/>
 
 </android.support.constraint.ConstraintLayout>
