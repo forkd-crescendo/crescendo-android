@@ -41,7 +41,7 @@ public class ArtworkDetailActivity extends YouTubeBaseActivity {
             @Override
             public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
                 if (!wasRestored) {
-                    player.loadVideo(artwork.getVideoUrl());
+                    player.loadVideo(artwork.getVideoId());
                     player.play();
                 }
             }

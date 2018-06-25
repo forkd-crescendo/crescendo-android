@@ -117,7 +117,6 @@ public class User {
         public Builder(User user) {
             this.user = user;
         }
-
         public Builder(List<User> users) {
             this.users = users;
         }
@@ -169,6 +168,31 @@ public class User {
             return new Builder(users);
         }
 
+    }
+
+    public static class IdBuilder {
+        public static String from(JSONObject jsonId) {
+            try {
+                return jsonId.getString("favourite_id");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        public static List<String> from(JSONArray jsonIds) {
+            List<String> ids = new ArrayList<>();
+            int length = jsonIds.length();
+
+            for (int i = 0; i < length; i++) {
+                try {
+                    ids.add(IdBuilder.from(jsonIds.getJSONObject(i)));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return ids;
+        }
     }
 }
 

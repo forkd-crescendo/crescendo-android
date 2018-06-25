@@ -9,30 +9,33 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Artwork implements Parcelable{
-    private String videoUrl;
+    private String videoId;
     private String title;
     private String description;
     private String thumbnail;
+    private String artist;
+    private String id;
 
-    public Artwork(String videoUrl, String title, String description, String thumbnail) {
-        this.videoUrl = videoUrl;
+    public Artwork(String videoId, String title, String description, String thumbnail, String artist, String id) {
+        this.videoId = videoId;
         this.title = title;
         this.description = description;
         this.thumbnail = thumbnail;
+        this.artist = artist;
+        this.id = id;
     }
 
     public Artwork() {
     }
 
-    public String getVideoUrl() {
-        return videoUrl;
+    public String getVideoId() {
+        return videoId;
     }
 
-    public Artwork setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
+    public Artwork setVideoId(String videoId) {
+        this.videoId = videoId;
         return this;
     }
 
@@ -56,9 +59,13 @@ public class Artwork implements Parcelable{
 
     public Bundle toBundle() {
         Bundle bundle = new Bundle();
-        bundle.putString("videoURL", getVideoUrl());
+        bundle.putString("videoId", getVideoId());
         bundle.putString("title", getTitle());
         bundle.putString("description", getDescription());
+        bundle.putString("thumbnail", getThumbnail());
+        bundle.putString("artist", getArtist());
+        bundle.putString("id", getId());
+
         return bundle;
     }
 
@@ -69,15 +76,21 @@ public class Artwork implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(videoUrl);
+        parcel.writeString(videoId);
         parcel.writeString(title);
         parcel.writeString(description);
+        parcel.writeString(thumbnail);
+        parcel.writeString(artist);
+        parcel.writeString(id);
     }
 
     public Artwork(Parcel in){
-        videoUrl=in.readString();
+        videoId =in.readString();
         title=in.readString();
         description=in.readString();
+        thumbnail=in.readString();
+        artist=in.readString();
+        id=in.readString();
     }
     public static final Parcelable.Creator<Artwork> CREATOR=new Parcelable.Creator<Artwork>()
     {
@@ -99,6 +112,22 @@ public class Artwork implements Parcelable{
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public static class Builder {
@@ -128,19 +157,23 @@ public class Artwork implements Parcelable{
 
         public static Builder from(Bundle bundle) {
             return new Builder(new Artwork(
-                    bundle.getString("videoURL"),
+                    bundle.getString("videoId"),
                     bundle.getString("title"),
                     bundle.getString("description"),
-                    bundle.getString("thumbnail")));
+                    bundle.getString("thumbnail"),
+                    bundle.getString("artist"),
+                    bundle.getString("id")));
         }
 
         public static Builder from(JSONObject jsonArkwork) {
             try {
                 return new Builder(new Artwork(
-                        jsonArkwork.getString("videoURL"),
+                        jsonArkwork.getString("videoId"),
                         jsonArkwork.getString("title"),
                         jsonArkwork.getString("description"),
-                        jsonArkwork.getString("thumbnail")));
+                        jsonArkwork.getString("thumbnail"),
+                        jsonArkwork.getString("artist"),
+                        jsonArkwork.getString("id")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

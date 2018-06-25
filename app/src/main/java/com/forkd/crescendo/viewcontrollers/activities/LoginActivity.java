@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextUser = findViewById(R.id.text_user);
         editTextPassword = findViewById(R.id.text_password);
 
-        editTextUser.setText("julia@farrell.com");
+        editTextUser.setText("isac@windler.net");
         editTextPassword.setText("password123");
 
         findViewById(R.id.button_login)
@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         Log.d("CrescendoAppFail", anError.getErrorDetail());
-                        Toast.makeText(LoginActivity.this, "Usuario o Contraseña incorrecta.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Usuario o Contraseña incorrecta.", Toast.LENGTH_SHORT).show();
                     }
                 });
 

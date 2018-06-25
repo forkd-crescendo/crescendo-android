@@ -38,6 +38,7 @@ import java.util.Objects;
  */
 public class ArtistsFragment extends Fragment {
 
+    private List<String> favoriteUsers;
     private List<User> users;
     private RecyclerView usersRecyclerView;
     private RecyclerView.LayoutManager usersLayoutManager;
@@ -54,9 +55,11 @@ public class ArtistsFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_artists, container, false);
+        favoriteUsers = new ArrayList<>();
         users = new ArrayList<>();
         usersRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_artist);
-        usersAdapter = new UsersAdapter(users);
+        usersAdapter = new UsersAdapter(users, getContext());
+        usersAdapter.setJWT(JWT);
         usersLayoutManager = new LinearLayoutManager(view.getContext());
         usersRecyclerView.setAdapter(usersAdapter);
         usersRecyclerView.setLayoutManager(usersLayoutManager);
@@ -66,7 +69,7 @@ public class ArtistsFragment extends Fragment {
 
     private void updateData() {
         AndroidNetworking
-                .get(CrescendoApi.getUsers())
+                .get(CrescendoApi.getFavoritesUsers())
                 .addHeaders("Accept", "application/json")
                 .addHeaders("Content-Type", "application/json")
                 .addHeaders("Authorization", JWT)
@@ -75,9 +78,30 @@ public class ArtistsFragment extends Fragment {
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        users = User.Builder.from(response).buildAll();
-                        usersAdapter.setUsers(users);
-                        usersAdapter.notifyDataSetChanged();
+                        favoriteUsers = User.IdBuilder.from(response);
+
+                        AndroidNetworking
+                                .get(CrescendoApi.getUsers())
+                                .addHeaders("Accept", "application/json")
+                                .addHeaders("Content-Type", "application/json")
+                                .addHeaders("Authorization", JWT)
+                                .setPriority(Priority.HIGH)
+                                .build()
+                                .getAsJSONArray(new JSONArrayRequestListener() {
+                                    @Override
+                                    public void onResponse(JSONArray response2) {
+                                        users = User.Builder.from(response2).buildAll();
+                                        usersAdapter.setUsers(users);
+                                        usersAdapter.setFavoriteUsers(favoriteUsers);
+                                        usersAdapter.notifyDataSetChanged();
+                                    }
+
+                                    @Override
+                                    public void onError(ANError anError) {
+                                        Log.d("CrescendoAppFail", anError.getErrorDetail());
+                                        Toast.makeText(getContext(), "Error de conexión.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
 
                     @Override
