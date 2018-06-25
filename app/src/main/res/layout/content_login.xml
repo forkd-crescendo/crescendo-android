@@ -73,8 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintBottom_toBottomOf="parent">
         <Button
             android:id="@+id/button_login"
             android:layout_width="@dimen/button_with_login"
@@ -84,8 +83,17 @@
             android:textSize="@dimen/button_label_size"
             android:textStyle="italic"
             android:background="@color/colorPrimary"
-            android:textColor="#fff">
-        </Button>
+            android:textColor="#fff" />
+        <Button
+        android:id="@+id/button_register"
+        android:layout_width="@dimen/button_with_login"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:text="@string/button_login_register_label"
+        android:textSize="@dimen/button_label_size"
+        android:textStyle="italic"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff" />
     </LinearLayout>
 
 

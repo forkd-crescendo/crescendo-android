@@ -107,21 +107,44 @@
             android:text="@string/artist_details_new_artwork_label" />
 
         <EditText
-            android:id="@+id/new_artwork_edit_text"
+            android:id="@+id/new_artwork_video_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             app:layout_constraintTop_toBottomOf="@id/new_artwork_label"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="@string/artist_details_edit_text_hint" />
+
+        <EditText
+            android:id="@+id/new_artwork_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/new_artwork_video_id"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="@string/new_artwork_title" />
+
+
+        <EditText
+            android:id="@+id/new_artwork_description"
+            android:ems="3"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/new_artwork_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="@string/new_artwork_description" />
+
         <Button
             android:id="@+id/new_artwork_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/new_artwork_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/new_artwork_description"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/artist_details_new_artwork_button" />
+
         <Button
             android:id="@+id/logout_button"
             android:layout_width="match_parent"

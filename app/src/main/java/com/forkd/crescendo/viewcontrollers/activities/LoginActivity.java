@@ -61,6 +61,15 @@ public class LoginActivity extends AppCompatActivity {
                         isAuthorized(userText, passwordText);
                     }
                 });
+
+
+        findViewById(R.id.button_register)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                    }
+                });
     }
 
     private boolean isAuthorized(String user, String password) {

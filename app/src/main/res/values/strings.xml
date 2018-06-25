@@ -5,7 +5,8 @@
     <string name="title_artists">Artistas</string>
     <string name="title_favorites">Favoritos</string>
     <string name="title_demos">Mis Canciones</string>
-    <string name="text_user_label">Usuario</string>
+    <string name="text_user_label">Nombre</string>
+    <string name="text_email_label">Email</string>
     <string name="text_password_label">Contraseña</string>
     <string name="button_login_label">Ingresar</string>
     <string name="button_register_label">Registrarse</string>
@@ -26,7 +27,13 @@
     <string name="artist_details_followers_label">Followers -</string>
     <string name="artist_details_new_artwork_label">Nuevo Video</string>
     <string name="artist_details_new_artwork_button">Subir</string>
-    <string name="artist_details_edit_text_hint">URL del video</string>
+    <string name="artist_details_edit_text_hint">ID del video</string>
     <string name="logout_button_label">Cerrar Sesión</string>
     <string name="there_is_no_favorites">No hay Favoritos</string>
+    <string name="there_is_no_demos">No hay Canciones</string>
+    <string name="new_artwork_description">Descripción del video</string>
+    <string name="new_artwork_title">Titulo del video</string>
+    <string name="button_login_register_label">Registrarse</string>
+    <string name="register_role_hint">Rol Musical</string>
+    <string name="register_genre_hint">Genero Musical</string>
 </resources>

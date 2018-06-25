@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -34,6 +35,7 @@ import java.util.List;
 public class DemosFragment extends Fragment {
 
    private List<Artwork> demos;
+    private TextView noDemosText;
     private RecyclerView demosRecyclerView;
     private RecyclerView.LayoutManager demosLayoutManager;
     private DemosAdapter demosAdapter;
@@ -53,6 +55,7 @@ public class DemosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_demos, container, false);
         demos = new ArrayList<>();
         demosRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_demos);
+        noDemosText = (TextView) view.findViewById(R.id.no_demos_text);
         demosAdapter = new DemosAdapter(demos);
         demosLayoutManager = new LinearLayoutManager(view.getContext());
         demosRecyclerView.setAdapter(demosAdapter);
@@ -75,6 +78,11 @@ public class DemosFragment extends Fragment {
                         demos = Artwork.Builder.from(response).buildAll();
                         demosAdapter.setDemos(demos);
                         demosAdapter.notifyDataSetChanged();
+                        if (demos.size() == 0) {
+                            noDemosText.setVisibility(View.VISIBLE);
+                        } else {
+                            noDemosText.setVisibility(View.INVISIBLE);
+                        }
                     }
 
                     @Override

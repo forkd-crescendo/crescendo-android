@@ -7,11 +7,17 @@ public class CrescendoApi {
     public static String authentication() {
         return BASE_URL + "auth/login";
     }
+    public static String createUser() {
+        return BASE_URL + "signup";
+    }
     public static String getUsers() {
         return BASE_URL + "users";
     }
     public static String getArtworks(String userId) {
         return BASE_URL + "users/" + userId + "/artworks";
+    }
+    public static String createUserArtwork() {
+        return BASE_URL + "me/artworks";
     }
     public static String getUserArtworks() {
         return BASE_URL + "me/artworks";

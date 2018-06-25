@@ -58,11 +58,13 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ANImageView artworkThumbnail;
         private TextView artworkTitle;
+        private TextView artworkArtist;
         private ConstraintLayout artworkLayout;
         public ViewHolder(View view) {
             super(view);
             artworkThumbnail = (ANImageView) view.findViewById(R.id.item_favorite_thumbnail);
             artworkTitle = (TextView) view.findViewById(R.id.item_favorite_title);
+            artworkArtist = (TextView) view.findViewById(R.id.item_favorite_artist);
             artworkLayout = (ConstraintLayout) view.findViewById(R.id.layout_favorite_item);
         }
 
@@ -71,6 +73,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
             artworkThumbnail.setErrorImageResId(R.mipmap.ic_launcher);
             artworkThumbnail.setImageUrl(artwork.getThumbnail());
             artworkTitle.setText(artwork.getTitle());
+            artworkArtist.setText(artwork.getArtist());
             artworkLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

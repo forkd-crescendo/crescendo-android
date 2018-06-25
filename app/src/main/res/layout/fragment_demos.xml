@@ -6,6 +6,15 @@
     tools:context=".viewcontrollers.fragments.DemosFragment"
     android:layout_marginBottom="@dimen/bottom_height">
 
+    <TextView
+        android:id="@+id/no_demos_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/there_is_no_demos"
+        android:layout_margin="@dimen/default_margin"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_demos"
         android:layout_width="match_parent"

@@ -27,6 +27,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_favorite_border_black_24dp"/>
+
+
+    <TextView
+        android:id="@+id/text_music_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/default_margin"
+        app:layout_constraintStart_toEndOf="@id/image_user"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/text_name"
+        android:text="@string/mock_text"/>
+
     <TextView
         android:id="@+id/text_name"
         android:layout_width="@dimen/user_text_name_width"
@@ -37,23 +50,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/mock_text"
         />
-    <TextView
-        android:id="@+id/text_music_role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_margin="@dimen/default_margin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/image_favorite"
-        android:text="@string/mock_text"/>
+
     <TextView
         android:id="@+id/text_music_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/text_music_role"
-        app:layout_constraintEnd_toStartOf="@id/image_favorite"
+        app:layout_constraintTop_toBottomOf="@id/text_name"
+        app:layout_constraintStart_toEndOf="@id/image_user"
         android:text="@string/mock_text"
         android:textColor="@color/colorAccent"/>
     <TextView
@@ -61,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
-        app:layout_constraintTop_toBottomOf="@id/text_music_genre"
+        app:layout_constraintTop_toBottomOf="@id/text_name"
         app:layout_constraintEnd_toStartOf="@id/image_favorite"
         android:text="@string/mock_text"
         />
